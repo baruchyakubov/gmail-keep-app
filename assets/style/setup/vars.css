@@ -1,0 +1,18 @@
+:root {
+  /* COLORS */
+  --clr1: #f6f8fc;
+  --clr2: #f2f6fc;
+  --clr3: rgb(240, 240, 240);
+  --clr4: rgb(155, 155, 155);
+  --clr5: #5f6368;
+  --clr6: #202124;
+
+
+  --secondary-clr1: rgb(88, 201, 58);
+  --secondary-clr2: rgb(122, 7, 70);
+
+  /* TEXT-SIZE AND WEIGHT */
+  --f-s: 875rem
+  --f-w-b:700
+
+} 
