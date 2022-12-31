@@ -4,14 +4,23 @@ import { gmailService } from '../../services/email-service.js'
 export default {
     props: ['email'],
     template: `
-        <section @click="showDetails" :class="setColor" v-if="email" class="email-preview">
+        <section @mouseleave="isHover=false" @mouseover="isHover=true" @click="showDetails" :class="setColor" v-if="email" class="email-preview">
             <img src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/check_box_outline_blank_baseline_nv700_20dp.png" alt="" />
+            <!-- <input @click.stop="checks" type="checkbox" /> -->
             <img src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_baseline_nv700_20dp.png" alt="" />
             <p>{{ email.fullname }}</p>
             <p class="body-preview">{{ limitChar }}</p>
-            <p class="date-preview">{{ setDate }}</p>
+            <p v-if="!isHover" class="date-preview">{{ setDate }}</p>
+            <div class="action-btn" v-else>
+                <img @click.stop="setStatusToTrash" src="../assets/img/delete.png" alt="" />
+            </div>
         </section>
     `,
+    data() {
+        return {
+            isHover: false
+        }
+    },
     computed: {
         setColor() {
             return { grey: this.email.isRead }
@@ -31,15 +40,23 @@ export default {
             return str
         }
     },
-    methods:{
-        showDetails(){
+    methods: {
+        showDetails() {
             this.email.isRead = true
             gmailService.save(this.email)
             eventBus.emit('toggleEmailList')
             this.$router.push(`/email-app/${this.email.id}`)
+        },
+        setStatusToTrash() {
+            if (this.email.status === 'trash') {
+                this.deleteEmail()
+                return
+            }
+            this.email.status = 'trash'
+            eventBus.emit('setStatusToTrash', this.email)
+        },
+        deleteEmail() {
+            eventBus.emit('deleteEmail', this.email.id)
         }
-    },
-    mounted() {
-        console.log(this.email);
     }
 }
