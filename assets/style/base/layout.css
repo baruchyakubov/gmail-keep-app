@@ -4,4 +4,11 @@
   padding-right: 1.6rem;
 }
 
+.simple-cards-grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  /* grid-auto-rows: 200px; */
+  grid-auto-flow: dense;
+}
 

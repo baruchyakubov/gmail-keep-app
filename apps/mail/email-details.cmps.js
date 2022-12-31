@@ -1,5 +1,5 @@
-import { eventBus } from "../../services/event-bus.service.js"
 import { gmailService } from "../../services/email-service.js"
+import { eventBus } from "../../services/event-bus.service.js"
 
 export default {
     template: `
