@@ -46,7 +46,7 @@ function _createNotes() {
                     txt: "Vue is Life!!"
                 },
                 style: {
-                    backgroundColor: "rgb(98, 180, 169)"
+                    backgroundColor: "#d7aefb"
                 }
 
             },
@@ -54,11 +54,11 @@ function _createNotes() {
                 id: "n102",
                 type: "noteImg",
                 info: {
-                    url: "../../assets/img/img-1.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682424/fbhakz9leiautymqoskq.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "rgb(98, 180, 169)"
+                    backgroundColor: "#cbf0f8"
                 }
             },
             {
@@ -74,34 +74,34 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "rgb(98, 180, 169)"
+                    backgroundColor: "#e6c9a8"
                 }
             },
             {
-                id: "n101",
+                id: "n104",
                 type: "noteTxt",
                 isPinned: true,
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
                 style: {
-                    backgroundColor: "rgb(143, 177, 228)"
+                    backgroundColor: "#fdcfe8"
                 }
 
             },
             {
-                id: "n102",
+                id: "n105",
                 type: "noteImg",
                 info: {
-                    url: "../../assets/img/img-2.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682415/gthyg1jodv9sr8vsz86u.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "rgb(228, 228, 143)"
+                    backgroundColor: "#d7aefb"
                 }
             },
             {
-                id: "n103",
+                id: "n106",
                 type: "noteTodos",
                 info: {
                     label: "Get my stuff together",
@@ -111,34 +111,34 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "rgb(228, 228, 143)"
+                    backgroundColor: "#aecbfa"
                 }
             },
             {
-                id: "n101",
+                id: "n107",
                 type: "noteTxt",
                 isPinned: true,
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
                 style: {
-                    backgroundColor: "rgb(173, 98, 180)"
+                    backgroundColor: "#cbf0f8"
                 }
 
             },
             {
-                id: "n102",
+                id: "n108",
                 type: "noteImg",
                 info: {
-                    url: "../../assets/img/img-3.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682405/eg6higcjdcuflv1y0j87.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "rgb(145, 180, 98)"
+                    backgroundColor: "#a7ffeb"
                 }
             },
             {
-                id: "n103",
+                id: "n109",
                 type: "noteTodos",
                 info: {
                     label: "Get my stuff together",
@@ -148,34 +148,34 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "rgb(145, 180, 98)"
+                    backgroundColor: "#ccff90"
                 }
             },
             {
-                id: "n101",
+                id: "n110",
                 type: "noteTxt",
                 isPinned: true,
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
                 style: {
-                    backgroundColor: "rgb(217, 190, 240)"
+                    backgroundColor: "#fff475"
                 }
 
             },
             {
-                id: "n102",
+                id: "n111",
                 type: "noteImg",
                 info: {
-                    url: "../../assets/img/img-4.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682386/jw7tjqbazxpxbj5aswmk.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "rgb(228, 143, 154)"
+                    backgroundColor: "#f28b82"
                 }
             },
             {
-                id: "n103",
+                id: "n112",
                 type: "noteTodos",
                 info: {
                     label: "Get my stuff together",
@@ -185,42 +185,42 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "rgb(228, 163, 143)"
+                    backgroundColor: "#fbbc04"
                 }
             },
             {
-                id: "n102",
+                id: "n113",
                 type: "noteImg",
                 info: {
-                    url: "../../assets/img/img-5.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682377/ib1aleyfyjm1l29dd1rj.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "rgb(160, 228, 143)"
+                    backgroundColor: "#e8eaed"
                 }
             },
             {
-                id: "n102",
+                id: "n114",
                 type: "noteImg",
                 info: {
-                    url: "../../assets/img/img-6.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682395/tfvahnqddjhj1fxybou6.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "rgb(143, 177, 228)"
+                    backgroundColor: "#e6c9a8"
                 }
             },
             {
-                id: "n102",
+                id: "n115",
                 type: "noteImg",
                 info: {
-                    url: "../../assets/img/img-7.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682366/qcwkidteaegfwzlembaa.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "rgb(228, 228, 143)"
+                    backgroundColor: "#fdcfe8"
                 }
-            },
+            }
         ]
         localStorage.setItem(NOTES_KEY, JSON.stringify(notes) || null)
     }

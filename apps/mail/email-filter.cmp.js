@@ -3,28 +3,28 @@ export default {
     template: `
         <section class="email-filter">
             <div @click="openCompose" class="compose-btn">
-                <img src="../assets/img/compose.png" alt="" />
+                <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682448/d5vus6gap72yle7qpafz.png" alt="" />
                 <p>Compose</p>
             </div>
             <div :class="{active: activeBtn === 'inbox' }" @click="setCriteria('inbox')">
-                <img src="../assets/img/inbox.png" alt="" />
+                <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682431/y8iec5liadlfgm4cnaky.png" alt="" />
                 <p>Inbox</p>
                 <p v-if="unreadCount" class="unread-count">{{ unreadCount }}</p>
             </div>
             <div :class="{active: activeBtn === 'starred' }" @click="setCriteria('starred')">
-                <img src="../assets/img/starred.png" alt="" />
+                <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682460/nmt9iion3qid7pfxd3c8.png" alt="" />
                 <p>Starred</p>
             </div>
             <div :class="{active: activeBtn === 'trash' }" @click="setCriteria('trash')">
-                <img src="../assets/img/delete.png" alt="" />
+                <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682443/pndv8blj1ovmewptmwox.png" alt="" />
                 <p>Trash</p>
             </div>
             <div :class="{active: activeBtn === 'sent' }" @click="setCriteria('sent')"> 
-                <img src="../assets/img/sent.png" alt="" />
+                <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682471/e3xkgzlhgbkoufcccqho.png" alt="" />
                 <p>Sent</p>
             </div>
             <div :class="{active: activeBtn === 'drafts' }" @click="setCriteria('drafts')">
-                <img src="../assets/img/drafts.png" alt="" />
+                <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682437/ybnoxsvfaa2lclwxbmki.png" alt="" />
                 <p>Drafts</p>
             </div>
         </section>

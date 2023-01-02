@@ -1,3 +1,13 @@
+/* NOTE-LIST */
+
+.note-list {
+    gap: 10px;
+    column-count: 6;
+    column-width: 200px;
+}
+
+/* NOTE-PREVIEW */
+
 .note-preview {
     height: fit-content;
     max-width: 400px;
@@ -6,12 +16,7 @@
     break-inside: avoid;
     margin-bottom: 10px;
     cursor: pointer;
-}
-
-.note-list {
-    gap: 10px;
-    column-count: 6;
-    column-width: 200px;
+    transition: 0.4s;
 }
 
 .note-img img {
@@ -51,3 +56,61 @@
 .note-action-btn img:hover {
     filter: contrast(calc(100 / 44));
 }
+
+/* NOTE-EDIT */
+
+.edit-modal{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    padding: 20px;
+    transition: 0.4s;
+}
+
+
+.note-todos-edit>*:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.edit-modal input{
+    all: unset;
+    color: rgb(62, 59, 59);
+    border: 1px grey solid;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.note-img-edit , .note-todos-edit , .note-txt-edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* COLOR-PICKER */
+
+.colors-container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.colors-container>*{
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.colors-container>*:hover{
+    border: 1px black solid;
+}
+

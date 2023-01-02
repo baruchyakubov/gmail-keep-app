@@ -4,6 +4,7 @@ import emailApp from './views/email-app.cmp.js'
 import emailDetails from './apps/mail/email-details.cmps.js'
 import emailCompose from './apps/mail/email-compose.cmp.js'
 import keepApp from './views/keep-app.cmp.js'
+import noteEdit from './apps/keep/pages/note-edit.cmp.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -34,7 +35,13 @@ const routerOptions = {
 		},
 		{
 			path: '/keep-app',
-			component: keepApp
+			component: keepApp,
+			children:[
+				{
+					path:'/keep-app/:id',
+					component: noteEdit
+				}
+			]
 		}
 	],
 }
