@@ -12,7 +12,7 @@ export default {
             <p class="body-preview">{{ limitChar }}</p>
             <p v-if="!isHover" class="date-preview">{{ setDate }}</p>
             <div class="action-btn" v-else>
-                <img @click.stop="setStatusToTrash" src="../assets/img/delete.png" alt="" />
+                <img @click.stop="setStatusToTrash" src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682443/pndv8blj1ovmewptmwox.png" alt="" />
             </div>
         </section>
     `,

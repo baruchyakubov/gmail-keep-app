@@ -9,7 +9,7 @@ export default {
         <section @click="editNote" @mouseleave="isHover=false" @mouseover="isHover=true" :style="{ 'background-color': note.style.backgroundColor }" v-if="note" class="note-preview">
             <component :is="note.type" :note="note"></component>
             <div :class="{visible: isHover}" class="note-action-btn">
-                 <img @click.stop="deleteEmail" src="../../assets/img/delete.png" alt="" />
+                 <img @click.stop="deleteEmail" src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682443/pndv8blj1ovmewptmwox.png" alt="" />
             </div>
         </section>
     `,
