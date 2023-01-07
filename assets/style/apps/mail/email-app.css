@@ -16,6 +16,7 @@ section .email-container {
 }
 
 
+
 .email-header {
     padding: 0;
     grid-row: 1;
@@ -24,9 +25,11 @@ section .email-container {
 
 .logo {
     margin-left: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+}
+
+.logo svg {
+    cursor: pointer;
+    display: none;
 }
 
 .search-mail {
@@ -51,6 +54,8 @@ section .email-container {
     grid-row: 2;
 }
 
+
+
 .email-filter>* {
     padding-left: 20px;
     padding-top: 5px;
@@ -67,7 +72,7 @@ section .email-container {
     transition: 0.4S;
 }
 
-.unread-count{
+.unread-count {
     justify-self: flex-end;
 }
 
@@ -161,17 +166,17 @@ section .email-container {
     transition: 0.4S;
 }
 
-.action-btn{
+.action-btn {
     justify-self: flex-end;
 }
 
-.action-btn img{
+.action-btn img {
     filter: contrast(calc(2 / 44));
     height: 15px;
     width: 15px;
 }
 
-.action-btn img:hover{
+.action-btn img:hover {
     filter: contrast(calc(100 / 44));
 }
 
@@ -228,18 +233,18 @@ section .email-container {
     width: 35vw;
 }
 
-.composed-form input{
+.composed-form input {
     padding: 20px;
     border-bottom: 0.1px rgb(219, 218, 230) solid;
 }
 
-.composed-form .send{
+.composed-form .send {
     border: none;
     border-top: 0.1px rgb(219, 218, 230) solid;
 }
 
 .composed-form textarea {
-    height: 30vh;
+    height: 30%;
     border: none;
     resize: none;
 }
@@ -257,4 +262,90 @@ section .email-container {
 
 .form-header {
     background-color: var(--clr1);
+}
+
+.opacity-wrapper {
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    left: 0%;
+    top: 0%;
+    opacity: 0.5;
+    background-color: black;
+}
+
+@media (max-width: 720px) {
+    .email-filter {
+        all: unset;
+        padding-top: 20px;
+        margin: 0;
+        position: fixed;
+        height: 100vh;
+        width: 50vw;
+        left: -50%;
+        top: 0;
+        transition: 0.4s;
+        background-color: white;
+    }
+    .compose-btn{
+        width: 70%;
+        gap: 7px;
+    }
+
+    .email-filter>*:not(:first-child) {
+        border-radius: 0;
+    }
+
+    .email-preview {
+        grid-template-rows: 1fr 4fr 1fr;
+        grid-template-columns: 20px 20px 1fr;
+        justify-items: flex-start;
+    }
+
+    .body-preview , .date-preview , .email-preview div  {
+        grid-column: 1/span 3;
+    }
+
+    .email-preview img,
+    .email-preview .fullname {
+        grid-row: 1;
+    }
+
+    .date-preview {
+        grid-row: 3;
+    }
+
+    .email-filter.opened {
+        left: 0;
+    }
+
+    .email-list {
+        grid-column: 1/span 2;
+    }
+
+    .email-container {
+        grid-template-columns: 20% 80%;
+    }
+
+    .search-mail {
+        width: 98%;
+
+    }
+
+    .logo img {
+        display: none;
+    }
+
+    .logo svg {
+        display: inline-block;
+    }
+
+    .opacity-wrapper {
+        display: inline-block;
+    }
+
+    .composed-form>* {
+        width: 100vw;
+    }
 }

@@ -1,7 +1,10 @@
+import { eventBus } from "../../services/event-bus.service.js"
+
 export default {
     props: ['emails'],
     template: `
-        <section class="email-filter">
+    <div @click="isOpen = false" class="opacity-wrapper" v-if="isOpen"></div>
+        <section :class="{opened:isOpen}" class="email-filter">
             <div @click="openCompose" class="compose-btn">
                 <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682448/d5vus6gap72yle7qpafz.png" alt="" />
                 <p>Compose</p>
@@ -31,18 +34,22 @@ export default {
     `,
     data() {
         return {
-            activeBtn: null
+            activeBtn: null,
+            isOpen: false
         }
     },
     created() {
         this.activeBtn = 'inbox'
+        eventBus.on('toggleFilter' , () => this.isOpen = !this.isOpen)
     },
     methods: {
         setCriteria(status) {
+            this.isOpen = false
             this.activeBtn = status
             this.$emit('setCriteriaByStatus', status)
         },
         openCompose() {
+            this.isOpen = false
             this.$router.push('/email-app/compose')
         }
     },

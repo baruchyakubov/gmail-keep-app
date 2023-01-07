@@ -8,7 +8,7 @@ export default {
             <img src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/check_box_outline_blank_baseline_nv700_20dp.png" alt="" />
             <!-- <input @click.stop="checks" type="checkbox" /> -->
             <img src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_baseline_nv700_20dp.png" alt="" />
-            <p>{{ email.fullname }}</p>
+            <p class="fullname">{{ email.fullname }}</p>
             <p class="body-preview">{{ limitChar }}</p>
             <p v-if="!isHover" class="date-preview">{{ setDate }}</p>
             <div class="action-btn" v-else>
