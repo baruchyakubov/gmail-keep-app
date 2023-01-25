@@ -5,7 +5,8 @@ export const keepService = {
     query,
     get,
     remove,
-    save
+    save,
+    getEmptyNote
 }
 
 const NOTES_KEY = 'notes'
@@ -29,6 +30,54 @@ function save(note) {
         return storageService.put(NOTES_KEY, note)
     } else {
         return storageService.post(NOTES_KEY, note)
+    }
+}
+
+function getEmptyNote(type) {
+    switch (type) {
+        case 'noteTxt':
+            return {
+                id: utilService.makeId(),
+                type: "noteTxt",
+                isPinned: false,
+                info: {
+                    txt: ""
+                },
+                style: {
+                    backgroundColor: "#d7aefb"
+                }
+            }
+        case 'noteImg':
+            return {
+                id: utilService.makeId(),
+                type: "noteImg",
+                isPinned: false,
+                info: {
+                    url: "",
+                    title: ""
+                },
+                style: {
+                    backgroundColor: "#d7aefb"
+                }
+            }
+        case 'noteTodos':
+            return {
+                id: utilService.makeId(),
+                type: "noteTodos",
+                isPinned: false,
+                info: {
+                    label: "",
+                    todos: [
+                        { txt: "", status: false },
+                        { txt: "", status: false },
+                        { txt: "", status: false },
+                        { txt: "", status: false }
+                    ]
+                },
+                style: {
+                    backgroundColor: "#d7aefb"
+                }
+            }
     }
 }
 
@@ -67,10 +116,10 @@ function _createNotes() {
                 info: {
                     label: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 },
-                        { txt: "complete sprint 3", doneAt: null },
-                        { txt: "go to gym", doneAt: 187111111 }
+                        { txt: "Driving liscence", doneAt: null, status: true },
+                        { txt: "Coding power", doneAt: 187111111, status: false },
+                        { txt: "complete sprint 3", doneAt: null, status: true },
+                        { txt: "go to gym", doneAt: 187111111, status: false }
                     ]
                 },
                 style: {
@@ -106,8 +155,8 @@ function _createNotes() {
                 info: {
                     label: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 }
+                        { txt: "Driving liscence", doneAt: null, status: true },
+                        { txt: "Coding power", doneAt: 187111111, status: false }
                     ]
                 },
                 style: {
@@ -143,8 +192,8 @@ function _createNotes() {
                 info: {
                     label: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 }
+                        { txt: "Driving liscence", doneAt: null, status: true },
+                        { txt: "Coding power", doneAt: 187111111, status: false }
                     ]
                 },
                 style: {
@@ -180,8 +229,8 @@ function _createNotes() {
                 info: {
                     label: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 }
+                        { txt: "Driving liscence", doneAt: null, status: false },
+                        { txt: "Coding power", doneAt: 187111111, status: false }
                     ]
                 },
                 style: {

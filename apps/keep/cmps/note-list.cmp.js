@@ -1,8 +1,8 @@
 import notePreview from "./note-preview.cmp.js"
 
 export default {
-    props:['notes'],
-	template: `
+    props: ['notes'],
+    template: `
         <section v-if="notes" class="note-container">
             <ul class="note-list" droptable="true">
                 <li v-for="note in notes" :key="note.id">
@@ -11,7 +11,11 @@ export default {
             </ul>
         </section>
     `,
-    components:{
+    mounted() {
+        // const elDeferImgs = document.querySelectorAll('[data-src]')
+        // elDeferImgs.forEach(elImg => elImg.src = elImg.dataset.src)
+    },
+    components: {
         notePreview
     }
 }

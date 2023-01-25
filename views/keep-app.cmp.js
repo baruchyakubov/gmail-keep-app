@@ -12,7 +12,10 @@ export default {
     `,
     data() {
         return {
-            notes: null
+            notes: null,
+            unsubscribe1: null,
+            unsubscribe2: null,
+            unsubscribe3: null
         }
     },
     created() {
@@ -20,8 +23,9 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
-        eventBus.on('setNoteColor', this.setNoteColor)
-        eventBus.on('deleteEmail', this.deleteEmail)
+        this.unsubscribe1 = eventBus.on('setNoteColor', this.setNoteColor)
+        this.unsubscribe2 = eventBus.on('deleteEmail', this.deleteEmail)
+        this.unsubscribe3 = eventBus.on('edit', this.editNote)
     },
     methods: {
         setNoteColor({ note, color }) {
@@ -35,15 +39,29 @@ export default {
                     this.notes[idx].style.backgroundColor = color
                 })
         },
-        deleteEmail(noteId){
+        deleteEmail(noteId) {
             keepService.remove(noteId)
-            .then(noteId => {
-                const idx = this.notes.findIndex(note => {
-                    return note.id === noteId
+                .then(noteId => {
+                    const idx = this.notes.findIndex(note => {
+                        return note.id === noteId
+                    })
+                    this.notes.splice(idx, 1)
                 })
-                this.notes.splice(idx, 1)
-            })
+        },
+        editNote(note) {
+            keepService.save(note)
+                .then(note => {
+                    const idx = this.notes.findIndex(n => {
+                        return note.id === n.id
+                    })
+                    this.notes.splice(idx, 1, note)
+                })
         }
+    },
+    unmounted(){
+        this.unsubscribe1()
+        this.unsubscribe2()
+        this.unsubscribe3()
     },
     computed: {
         Notes() {

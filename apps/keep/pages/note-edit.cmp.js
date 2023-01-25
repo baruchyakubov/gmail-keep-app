@@ -10,12 +10,14 @@ export default {
         <div @click="$router.push('/keep-app')" v-if="note" class="opacity-wrapper"></div>
         <section v-if="note" :style="{ 'background-color': note.style.backgroundColor }" class="edit-modal">
             <color-picker @setNoteColor="setNoteColor"></color-picker>
-           <component :is="note.type + 'Edit'" :note="note"></component>
+           <component @setForm="setForm" :is="note.type + 'Edit'" :note="note"></component>
+           <button @click="edit">Edit</button>
         </section>
     `,
     data() {
         return {
-            note: null
+            note: null,
+            form: null
         }
     },
     created() {
@@ -25,12 +27,21 @@ export default {
                 this.note = note
             })
     },
-    methods:{
-        setNoteColor(color){
-            eventBus.emit('setNoteColor' , {note: this.note, color})
+    methods: {
+        setForm(form) {
+            this.form = form
+        },
+        setNoteColor(color) {
+            eventBus.emit('setNoteColor', { note: this.note, color })
+        },
+        edit() {
+            const note = { ...this.note }
+            note.info = this.form
+            eventBus.emit('edit' , note)
+            this.$router.push('/keep-app')
         }
     },
-    components:{
+    components: {
         noteTxtEdit,
         noteImgEdit,
         noteTodosEdit,

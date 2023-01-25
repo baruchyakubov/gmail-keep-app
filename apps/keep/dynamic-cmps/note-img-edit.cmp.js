@@ -4,12 +4,20 @@ export default {
     <section class="note-img-edit" v-if="note">
         <div>
             <p>Title:</p>
-           <input type="text" :value="note.info.title" />
+           <input @input="$emit('setForm' , form)" type="text" v-model="form.title" />
         </div>
         <div>
            <p>Image url:</p>
-           <input type="text" :value="note.info.url" />
+           <input @input="$emit('setForm' , form)" type="text" v-model="form.url" />
         </div>
     </section>
-    `
+    `,
+        data() {
+            return {
+                form: {
+                    url: this.note.info.url,
+                    title: this.note.info.title
+                }
+            }
+        }
 }

@@ -114,3 +114,7 @@
     border: 1px black solid;
 }
 
+.done{
+    text-decoration-line: line-through;
+}
+
