@@ -11,10 +11,6 @@ export default {
             </ul>
         </section>
     `,
-    mounted() {
-        // const elDeferImgs = document.querySelectorAll('[data-src]')
-        // elDeferImgs.forEach(elImg => elImg.src = elImg.dataset.src)
-    },
     components: {
         notePreview
     }

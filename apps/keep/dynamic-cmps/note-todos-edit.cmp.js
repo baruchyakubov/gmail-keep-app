@@ -2,12 +2,20 @@ export default {
     props: ['note'],
     template: `
         <section class="note-todos-edit" v-if="note">
-            <input @input="$emit('setForm' , form)" type="text" v-model="form.label" />
-            <div v-for="(todo,idx) in form.todos"  >
-                <input @input="$emit('setForm' , form)" type="text" v-model="todo.txt" />
-                <button @click="removeTodo(idx)">X</button>
+            <div class="label">
+               <p>Label</p>
+               <input @input="$emit('setForm' , form)" type="text" v-model="form.label" />
             </div>
-            <button @click="addTodos">Add todos</button>
+            <p>Todos</p>
+            <button @click="addTodos">Add todo</button>
+            <section class="todo-list-edit">
+               <div v-for="(todo,idx) in form.todos"  >
+                   <div class="todo-edit">
+                      <input @input="$emit('setForm' , form)" type="text" v-model="todo.txt" />
+                      <img class="delete-icon" @click="removeTodo(idx)" src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682443/pndv8blj1ovmewptmwox.png" alt="" />
+                   </div>
+               </div>
+            </section>
         </section>
     `,
     data() {

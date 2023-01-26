@@ -5,10 +5,8 @@ export default {
     template: `
     <section class="note-img">
         <h1>{{ note.info.title }}</h1>
-        <img :src="note.info.url" />
+        <img :src="note.info.url" loading="lazy" decoding="async"/>
     </section>
     `
 }
 
-// :src="'data:' + note.info.url + ';base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='" 
-// :data-src="note.info.url"

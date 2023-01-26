@@ -6,7 +6,12 @@ export default {
     template: `
         <section v-if="notes" class="keep-app main-layout">
             <h1>keep-app</h1>
-            <note-list :notes="Notes"></note-list>
+            <div class="list-container">
+               <h1 v-if="pinnedNotes.length && unPinnedNotes.length">Pinned</h1>
+               <note-list :notes="pinnedNotes"></note-list>
+               <h1 v-if="unPinnedNotes.length && pinnedNotes.length">Unpinned</h1>
+               <note-list :notes="unPinnedNotes"></note-list>
+            </div>
             <router-view></router-view>
         </section>
     `,
@@ -64,8 +69,11 @@ export default {
         this.unsubscribe3()
     },
     computed: {
-        Notes() {
-            return this.notes
+        pinnedNotes() {
+            return this.notes.filter(note => note.isPinned)
+        },
+        unPinnedNotes() {
+            return this.notes.filter(note => !note.isPinned)
         }
     },
     components: {

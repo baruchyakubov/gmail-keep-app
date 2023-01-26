@@ -1,10 +1,16 @@
 /* NOTE-LIST */
+.list-container {
+    overflow: auto;
+    height: 80vh;
+    padding: 20px;
+}
 
 .note-list {
-    gap: 10px;
-    column-count: 6;
+    column-gap: 10px;
     column-width: 200px;
 }
+
+
 
 /* NOTE-PREVIEW */
 
@@ -21,7 +27,10 @@
 
 .note-img img {
     width: 100%;
+    height: auto;
     object-fit: contain;
+    content-visibility: auto;
+    background-color: #eee;
 }
 
 .todo-list {
@@ -36,6 +45,7 @@
 .note-action-btn {
     margin-top: 10px;
     display: flex;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     opacity: 0;
@@ -46,20 +56,27 @@
     opacity: 1;
 }
 
-.note-action-btn img {
+.delete-icon,
+.pin-icon {
+    cursor: pointer;
     height: 20px;
     width: 20px;
     filter: contrast(calc(2 / 44));
     transition: 0.4s;
 }
 
-.note-action-btn img:hover {
+.delete-icon:hover,
+.pin-icon:hover {
     filter: contrast(calc(100 / 44));
+}
+
+.pin-icon:hover {
+    transform: rotate(25deg);
 }
 
 /* NOTE-EDIT */
 
-.edit-modal{
+.edit-modal {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -72,11 +89,11 @@
 }
 
 
-.note-todos-edit>*:not(:last-child){
+.note-todos-edit>*:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.edit-modal input{
+.edit-modal input {
     all: unset;
     color: rgb(62, 59, 59);
     border: 1px grey solid;
@@ -84,7 +101,9 @@
     border-radius: 10px;
 }
 
-.note-img-edit , .note-todos-edit , .note-txt-edit{
+.note-img-edit,
+.note-todos-edit,
+.note-txt-edit {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,7 +113,7 @@
 
 /* COLOR-PICKER */
 
-.colors-container{
+.colors-container {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -102,7 +121,7 @@
     flex-wrap: wrap;
 }
 
-.colors-container>*{
+.colors-container>* {
     height: 28px;
     width: 28px;
     border-radius: 50%;
@@ -110,11 +129,69 @@
     cursor: pointer;
 }
 
-.colors-container>*:hover{
+.colors-container>*:hover {
     border: 1px black solid;
 }
 
-.done{
+.done {
     text-decoration-line: line-through;
 }
 
+/* EDIT */
+
+.note-todos-edit .label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.todo-list-edit {
+    overflow: auto;
+    height: 200px;
+    padding: 10px;
+}
+
+.todo-list-edit::-webkit-scrollbar , .list-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.todo-list-edit::-webkit-scrollbar-track , .list-container::-webkit-scrollbar-track  {
+    border-radius: 10px;
+    background: rgb(226, 231, 233);
+}
+
+.todo-list-edit::-webkit-scrollbar-thumb , .list-container::-webkit-scrollbar-thumb  {
+    border-radius: 10px;
+    background: rgb(182, 170, 192);
+}
+
+.note-todos-edit p {
+    font-size: 20px;
+}
+
+.todo-list-edit>* {
+    padding: 10px;
+    border: 1px grey solid;
+    border-radius: 10px;
+}
+
+.todo-edit {
+    display: flex;
+    align-items: center;
+}
+
+.todo-list-edit>*:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.todo-list-edit input {
+    all: unset;
+    color: black;
+}
+
+.edit-btn {
+    margin-top: 20px;
+    margin-inline: 43%;
+}

@@ -1,0 +1,16 @@
+.home-page{
+    background-color: #515356;
+    height: 50vh;
+}
+
+.home-page .intro{
+    position: relative;
+}
+
+/* .home-page .intro h1 , p{
+    color: rgb(255, 255, 255);
+} */
+
+.home-page .intro h1{
+    font-size: 40px;
+}

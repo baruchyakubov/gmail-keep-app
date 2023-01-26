@@ -11,7 +11,7 @@ export default {
         <section v-if="note" :style="{ 'background-color': note.style.backgroundColor }" class="edit-modal">
             <color-picker @setNoteColor="setNoteColor"></color-picker>
            <component @setForm="setForm" :is="note.type + 'Edit'" :note="note"></component>
-           <button @click="edit">Edit</button>
+           <button class="edit-btn" @click="edit">Edit</button>
         </section>
     `,
     data() {

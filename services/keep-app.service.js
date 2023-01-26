@@ -102,8 +102,9 @@ function _createNotes() {
             {
                 id: "n102",
                 type: "noteImg",
+                isPinned: false,
                 info: {
-                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682424/fbhakz9leiautymqoskq.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674691290/eayey7i3gccplof0m85p.webp",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -113,6 +114,7 @@ function _createNotes() {
             {
                 id: "n103",
                 type: "noteTodos",
+                isPinned: false,
                 info: {
                     label: "Get my stuff together",
                     todos: [
@@ -141,8 +143,9 @@ function _createNotes() {
             {
                 id: "n105",
                 type: "noteImg",
+                isPinned: false,
                 info: {
-                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682415/gthyg1jodv9sr8vsz86u.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674691261/syow5ftdrrgtbjg2fpml.webp",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -152,6 +155,7 @@ function _createNotes() {
             {
                 id: "n106",
                 type: "noteTodos",
+                isPinned: false,
                 info: {
                     label: "Get my stuff together",
                     todos: [
@@ -166,7 +170,7 @@ function _createNotes() {
             {
                 id: "n107",
                 type: "noteTxt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
@@ -178,8 +182,9 @@ function _createNotes() {
             {
                 id: "n108",
                 type: "noteImg",
+                isPinned: false,
                 info: {
-                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682405/eg6higcjdcuflv1y0j87.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674691250/u9qtvhejgjcygy4cjicw.webp",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -189,6 +194,7 @@ function _createNotes() {
             {
                 id: "n109",
                 type: "noteTodos",
+                isPinned: false,
                 info: {
                     label: "Get my stuff together",
                     todos: [
@@ -203,7 +209,7 @@ function _createNotes() {
             {
                 id: "n110",
                 type: "noteTxt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
@@ -215,8 +221,9 @@ function _createNotes() {
             {
                 id: "n111",
                 type: "noteImg",
+                isPinned: false,
                 info: {
-                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682386/jw7tjqbazxpxbj5aswmk.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674691224/unp903e23lgj9uwetglw.webp",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -226,6 +233,7 @@ function _createNotes() {
             {
                 id: "n112",
                 type: "noteTodos",
+                isPinned: false,
                 info: {
                     label: "Get my stuff together",
                     todos: [
@@ -240,8 +248,9 @@ function _createNotes() {
             {
                 id: "n113",
                 type: "noteImg",
+                isPinned: true,
                 info: {
-                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682377/ib1aleyfyjm1l29dd1rj.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674691185/icencpihsbyxgsabbwo7.webp",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -251,8 +260,9 @@ function _createNotes() {
             {
                 id: "n114",
                 type: "noteImg",
+                isPinned: false,
                 info: {
-                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682395/tfvahnqddjhj1fxybou6.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674691185/icencpihsbyxgsabbwo7.webp",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -262,8 +272,9 @@ function _createNotes() {
             {
                 id: "n115",
                 type: "noteImg",
+                isPinned: false,
                 info: {
-                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682366/qcwkidteaegfwzlembaa.jpg",
+                    url: "https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674691273/xkq3salpxnpnpd3glzh1.webp",
                     title: "Bobi and Me"
                 },
                 style: {
