@@ -101,7 +101,8 @@ function _createEmails() {
                 to: 'momo@momo.com',
                 fullname: 'Mahatma Appsus',
                 status: 'sent',
-                note:''
+                note:'',
+                isStared:true
             },
 
             {
@@ -114,7 +115,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:true
             },
             {
                 id: utilService.makeId(),
@@ -125,8 +127,9 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'MyFitnessPal',
-                status: 'Can you believe these dishes are under 350 calories?',
-                note:''
+                status: 'inbox',
+                note:'',
+                isStared:true
             },
             {
                 id: utilService.makeId(),
@@ -138,7 +141,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'muki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -150,7 +154,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'duki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:true
             },
             {
                 id: utilService.makeId(),
@@ -162,7 +167,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'pet',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -174,7 +180,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'netflix',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -186,7 +193,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -198,7 +206,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -210,7 +219,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -222,7 +232,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -234,7 +245,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -246,7 +258,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -258,7 +271,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -270,7 +284,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'puki',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -282,7 +297,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -294,7 +310,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -306,7 +323,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
             {
                 id: utilService.makeId(),
@@ -318,7 +336,8 @@ function _createEmails() {
                 to: 'user@appsus.com',
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
-                note:''
+                note:'',
+                isStared:false
             },
         ]
         localStorage.setItem(EMAILS_KEY, JSON.stringify(emails) || null)

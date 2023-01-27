@@ -66,15 +66,15 @@ button {
 }
 
 ::-webkit-scrollbar{
-  width: 0px;
+  width: 12px;
 }
 ::-webkit-scrollbar-track{
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background: rgb(226, 231, 233);
 }
 
 ::-webkit-scrollbar-thumb{
-  border-radius: 10px;
-  background: rgb(182, 170, 192);
+  /* border-radius: 10px; */
+  background: rgb(188, 190, 197);
 }
 

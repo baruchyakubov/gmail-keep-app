@@ -6,8 +6,8 @@ export default {
     template: `
         <section @mouseleave="isHover=false" @mouseover="isHover=true" @click="showDetails" :class="setColor" v-if="email" class="email-preview">
             <img src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/check_box_outline_blank_baseline_nv700_20dp.png" alt="" />
-            <!-- <input @click.stop="checks" type="checkbox" /> -->
-            <img src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_baseline_nv700_20dp.png" alt="" />
+            <img @click.stop="toggleIsStared" v-if="!email.isStared" src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_baseline_nv700_20dp.png" alt="" />
+            <img @click.stop="toggleIsStared" v-else src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_fill_googyellow500_20dp.png" alt="" />
             <p class="fullname">{{ email.fullname }}</p>
             <p class="body-preview">{{ limitChar }}</p>
             <p v-if="!isHover" class="date-preview">{{ setDate }}</p>
@@ -41,6 +41,11 @@ export default {
         }
     },
     methods: {
+        toggleIsStared(){
+            const email = this.email
+            email.isStared = !email.isStared
+            eventBus.emit('editEmailStared', this.email)
+        },
         showDetails() {
             this.email.isRead = true
             gmailService.save(this.email)

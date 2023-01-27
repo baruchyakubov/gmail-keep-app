@@ -37,13 +37,18 @@ export default {
         eventBus.on('sendMessege', this.sendMessege)
         eventBus.on('setStatusToTrash', this.setStatusToTrash)
         eventBus.on('deleteEmail', this.deleteEmail)
+        eventBus.on('editEmailStared', this.editEmailStared)
     },
     methods: {
         setCriteria() {
             this.emailsToShow()
         },
         setCriteriaByStatus(status) {
-            this.criteria.status = status
+            if(status === 'starred') this.criteria.isStared = true
+            else{
+                this.criteria.status = status
+                if(this.criteria.isStared) this.criteria.isStared = false
+            }
         },
         sendMessege(form) {
             gmailService.sendEmail(form.to, form.subject, form.body, form.noteInfo)
@@ -60,6 +65,15 @@ export default {
                     this.emails[idx].status = 'trash'
                 })
         },
+        editEmailStared(email){
+            gmailService.save(email)
+            .then(updatedEmail => {
+                const idx = this.emails.findIndex(email => {
+                    return email.id === updatedEmail.id
+                })
+                this.emails[idx].isStared = email.isStared
+            })
+        },
         deleteEmail(emailId) {
             gmailService.remove(emailId)
                 .then(emailId => {
@@ -74,8 +88,8 @@ export default {
     computed: {
         emailsToShow() {
             const regex = new RegExp(this.criteria.txt, 'i')
-            var emails = this.emails.filter(email => regex.test(email.fullname)
-                && email.status === this.criteria.status)
+            if (this.criteria.isStared) var emails = this.emails.filter(email => (regex.test(email.fullname) || regex.test(email.subject) || regex.test(email.body)) && email.isStared === this.criteria.isStared)
+            else var emails = this.emails.filter(email => (regex.test(email.fullname) || regex.test(email.subject) || regex.test(email.body)) && email.status === this.criteria.status)
             return emails
         }
     },
