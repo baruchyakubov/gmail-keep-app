@@ -76,8 +76,8 @@ export default {
                     return regex.test(note.info.title)
                 case 'noteTodos':
                     return regex.test(note.info.label) 
-            }
         }
+    }
     },
     unmounted(){
         this.unsubscribe1()
