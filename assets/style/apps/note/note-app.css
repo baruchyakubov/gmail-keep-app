@@ -4,7 +4,7 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   margin-bottom: 20px;
+   margin-block: 20px;
 }
 
 .filter-add-container input{
@@ -22,13 +22,15 @@
 /* NOTE-LIST */
 .list-container {
     overflow: auto;
-    height: 80vh;
-    padding: 20px;
+    height: calc(90vh - 92.2px);
+    padding-inline-end: 5px;
 }
 
 .note-list {
     column-gap: 10px;
     column-width: 200px;
+    margin: 0;
+    padding-block: 20px;
 }
 
 

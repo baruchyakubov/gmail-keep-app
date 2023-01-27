@@ -6,7 +6,6 @@ import noteFilter from "../apps/keep/cmps/note-filter.cmp.js"
 export default {
     template: `
         <section v-if="notes" class="keep-app main-layout">
-            <h1>keep-app</h1>
             <note-filter @setFilter="setFilter"></note-filter>
             <div class="list-container">
                <h1 v-if="pinnedNotes.length && unPinnedNotes.length">Pinned</h1>
