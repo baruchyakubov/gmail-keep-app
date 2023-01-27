@@ -36,7 +36,7 @@ export default {
         },
         limitChar() {
             var str = this.email.subject + '-' + this.email.body
-            if (str.length > 50) str = str.substring(0, 120) + '...'
+            // if (str.length > 50) str = str.substring(0, 120) + '...'
             return str
         }
     },

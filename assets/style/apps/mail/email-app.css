@@ -83,7 +83,7 @@ section .email-container {
 
 
 .compose-btn {
-    border-radius: 20px;
+    border-radius: 15px;
     justify-content: flex-start;
     font-weight: 600;
     width: 60%;
@@ -158,12 +158,24 @@ section .email-container {
     font-size: 14px;
     padding: 10px;
     display: grid;
-    grid-template-columns: 2% 2% 15% 61% 20%;
+    grid-template-columns: 25px 25px 15% 74% auto;
     align-items: center;
     justify-items: flex-start;
     font-weight: 700;
     cursor: pointer;
     transition: 0.4S;
+}
+
+.body-preview , .fullname{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.date-preview{
+    white-space: nowrap;
 }
 
 .action-btn {
@@ -345,5 +357,8 @@ section .email-container {
 
     .composed-form>* {
         width: 100vw;
+    }
+    .body-preview , .fullname{
+        -webkit-line-clamp: 3;
     }
 }
