@@ -158,13 +158,14 @@ section .email-container {
     font-size: 14px;
     padding: 10px;
     display: grid;
-    grid-template-columns: 25px 25px 15% 74% auto;
+    grid-template-columns: 20px 20px 15% 74% auto;
     align-items: center;
     justify-items: flex-start;
     font-weight: 700;
     cursor: pointer;
     transition: 0.4S;
 }
+
 
 .body-preview , .fullname{
     overflow: hidden;

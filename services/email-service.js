@@ -126,7 +126,7 @@ function _createEmails() {
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
-                fullname: 'MyFitnessPal',
+                fullname: 'My fitness pal',
                 status: 'inbox',
                 note:'',
                 isStared:true
