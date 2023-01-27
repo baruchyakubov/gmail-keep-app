@@ -1,11 +1,13 @@
 import { keepService } from "../services/keep-app.service.js"
 import noteList from "../apps/keep/cmps/note-list.cmp.js"
 import { eventBus } from "../services/event-bus.service.js"
+import noteFilter from "../apps/keep/cmps/note-filter.cmp.js"
 
 export default {
     template: `
         <section v-if="notes" class="keep-app main-layout">
             <h1>keep-app</h1>
+            <note-filter @setFilter="setFilter"></note-filter>
             <div class="list-container">
                <h1 v-if="pinnedNotes.length && unPinnedNotes.length">Pinned</h1>
                <note-list :notes="pinnedNotes"></note-list>
@@ -20,7 +22,8 @@ export default {
             notes: null,
             unsubscribe1: null,
             unsubscribe2: null,
-            unsubscribe3: null
+            unsubscribe3: null,
+            filterBy:{}
         }
     },
     created() {
@@ -61,6 +64,19 @@ export default {
                     })
                     this.notes.splice(idx, 1, note)
                 })
+        },
+        setFilter(filterBy){
+            this.filterBy = filterBy
+        },
+        setRegexTest(note , regex){
+            switch (note.type) {
+                case 'noteTxt':
+                    return regex.test(note.info.txt)
+                case 'noteImg':
+                    return regex.test(note.info.title)
+                case 'noteTodos':
+                    return regex.test(note.info.label) 
+            }
         }
     },
     unmounted(){
@@ -70,13 +86,16 @@ export default {
     },
     computed: {
         pinnedNotes() {
-            return this.notes.filter(note => note.isPinned)
+            const regex = new RegExp(this.filterBy.txt, 'i')
+            return this.notes.filter(note => note.isPinned && this.setRegexTest(note , regex))
         },
         unPinnedNotes() {
-            return this.notes.filter(note => !note.isPinned)
+            const regex = new RegExp(this.filterBy.txt, 'i')
+            return this.notes.filter(note => !note.isPinned && this.setRegexTest(note , regex))
         }
     },
     components: {
-        noteList
+        noteList,
+        noteFilter
     }
 }

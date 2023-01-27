@@ -38,7 +38,7 @@ const routerOptions = {
 			component: keepApp,
 			children:[
 				{
-					path:'/keep-app/:id',
+					path:'/keep-app/edit/:id?',
 					component: noteEdit
 				}
 			]

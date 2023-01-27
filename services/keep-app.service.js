@@ -37,7 +37,6 @@ function getEmptyNote(type) {
     switch (type) {
         case 'noteTxt':
             return {
-                id: utilService.makeId(),
                 type: "noteTxt",
                 isPinned: false,
                 info: {
@@ -49,7 +48,6 @@ function getEmptyNote(type) {
             }
         case 'noteImg':
             return {
-                id: utilService.makeId(),
                 type: "noteImg",
                 isPinned: false,
                 info: {
@@ -62,7 +60,6 @@ function getEmptyNote(type) {
             }
         case 'noteTodos':
             return {
-                id: utilService.makeId(),
                 type: "noteTodos",
                 isPinned: false,
                 info: {

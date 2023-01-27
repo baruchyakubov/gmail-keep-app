@@ -1,3 +1,24 @@
+/* NOTE-FILTER-ADD */
+
+.filter-add-container{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 20px;
+}
+
+.filter-add-container input{
+    width: 60%;
+    height: 48px;
+    padding: 11px;
+    background-color: #eaf1fb;
+    color: var(--clr5);
+    border-radius: 5px;
+    border: none;
+}
+
+
+
 /* NOTE-LIST */
 .list-container {
     overflow: auto;
@@ -40,6 +61,8 @@
 
 .note-preview h1 {
     font-size: 20px;
+    line-height: normal;
+    margin-bottom: 10px;
 }
 
 .note-action-btn {
@@ -99,6 +122,24 @@
     border: 1px grey solid;
     padding: 10px;
     border-radius: 10px;
+}
+
+.note-type-choose-container{
+    display: flex;
+    gap: 10px; 
+    margin-bottom: 20px;
+ }
+
+.note-type-choose-container img{
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    filter: contrast(calc(2 / 44));
+    transition: 0.4s;
+}
+
+.note-type-choose-container img:hover{
+    filter: contrast(calc(100 / 44));
 }
 
 .note-img-edit,

@@ -21,7 +21,7 @@ export default {
     },
     methods:{
         editNote(){
-            this.$router.push(`/keep-app/${this.note.id}`)
+            this.$router.push(`/keep-app/edit/${this.note.id}`)
         },
         deleteEmail(){
             eventBus.emit('deleteEmail' , this.note.id)
