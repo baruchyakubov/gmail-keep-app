@@ -344,6 +344,7 @@ section .email-container {
         padding-top: 20px;
         margin: 0;
         position: fixed;
+        z-index: 1000;
         height: 100vh;
         width: 50vw;
         left: -50%;
