@@ -65,7 +65,7 @@ export default {
             this.emails.forEach(email => {
                 if (email.isRead === false) counter++
             })
-            return counter-1
+            return counter
         }
     }
 }
