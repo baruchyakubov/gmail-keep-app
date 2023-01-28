@@ -41,7 +41,7 @@ export default {
                 })
         },
         addToDrafts() {
-            gmailService.save(this.email)
+            gmailService.save({...this.email})
                 .then(email => {
                     if (!this.email.id){
                         this.email = email
@@ -54,7 +54,7 @@ export default {
         sendMessage() {
             if (this.to === '') return
             this.email.status = 'sent'
-            gmailService.save(this.email)
+            gmailService.save({...this.email})
                 .then(email => {
                     eventBus.emit('sendMessege', {...this.email})
                     this.$router.push('/email-App')
