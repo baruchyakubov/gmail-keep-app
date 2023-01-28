@@ -2,13 +2,14 @@ import { eventBus } from '../services/event-bus.service.js'
 
 export default {
 	template: `
-        <section :class="msg.type" v-if="msg.txt" class="user-msg">
+        <section :class="msg.type" :class="{shown:isShown}" class="user-msg">
             {{ msg.txt }}
         </section>
     `,
 	data() {
 		return {
 			msg: { txt: '', type: 'success' },
+			isShown:false
 		}
 	},
 	created() {
@@ -16,8 +17,9 @@ export default {
 	},
 	methods: {
 		showMsg(msg) {
+			this.isShown = true
 			this.msg = msg
-			setTimeout(() => (this.msg.txt = ''), this.msg.timeout || 1500)
+			setTimeout(() => (this.isShown = false), this.msg.timeout || 4000)
 		},
 	},
 }

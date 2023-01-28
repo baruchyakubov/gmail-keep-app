@@ -1,6 +1,6 @@
 import { keepService } from "../services/keep-app.service.js"
 import noteList from "../apps/keep/cmps/note-list.cmp.js"
-import { eventBus } from "../services/event-bus.service.js"
+import { eventBus , showSuccessMsg } from "../services/event-bus.service.js"
 import noteFilter from "../apps/keep/cmps/note-filter.cmp.js"
 
 export default {
@@ -22,7 +22,7 @@ export default {
             unsubscribe1: null,
             unsubscribe2: null,
             unsubscribe3: null,
-            filterBy:{}
+            filterBy: {}
         }
     },
     created() {
@@ -53,6 +53,7 @@ export default {
                         return note.id === noteId
                     })
                     this.notes.splice(idx, 1)
+                    showSuccessMsg('Note deleted')
                 })
         },
         editNote(note) {
@@ -61,24 +62,30 @@ export default {
                     const idx = this.notes.findIndex(n => {
                         return note.id === n.id
                     })
-                    this.notes.splice(idx, 1, note)
+                    if (idx === -1) {
+                        this.notes.unshift(note)
+                        showSuccessMsg('Note added successfully')
+                    } else {
+                        this.notes.splice(idx, 1, note)
+                        showSuccessMsg('Note edited successfully')
+                    }
                 })
         },
-        setFilter(filterBy){
+        setFilter(filterBy) {
             this.filterBy = filterBy
         },
-        setRegexTest(note , regex){
+        setRegexTest(note, regex) {
             switch (note.type) {
                 case 'noteTxt':
                     return regex.test(note.info.txt)
                 case 'noteImg':
                     return regex.test(note.info.title)
                 case 'noteTodos':
-                    return regex.test(note.info.label) 
+                    return regex.test(note.info.label)
+            }
         }
-    }
     },
-    unmounted(){
+    unmounted() {
         this.unsubscribe1()
         this.unsubscribe2()
         this.unsubscribe3()
@@ -86,11 +93,11 @@ export default {
     computed: {
         pinnedNotes() {
             const regex = new RegExp(this.filterBy.txt, 'i')
-            return this.notes.filter(note => note.isPinned && this.setRegexTest(note , regex))
+            return this.notes.filter(note => note.isPinned && this.setRegexTest(note, regex))
         },
         unPinnedNotes() {
             const regex = new RegExp(this.filterBy.txt, 'i')
-            return this.notes.filter(note => !note.isPinned && this.setRegexTest(note , regex))
+            return this.notes.filter(note => !note.isPinned && this.setRegexTest(note, regex))
         }
     },
     components: {

@@ -2,7 +2,7 @@ import emailHeader from "../apps/mail/email-header.cmp.js"
 import emailList from "../apps/mail/email-list.cmp.js"
 import { gmailService } from "../services/email-service.js"
 import emailFilter from "../apps/mail/email-filter.cmp.js"
-import { eventBus } from "../services/event-bus.service.js"
+import { eventBus, showSuccessMsg, showUserMsg } from "../services/event-bus.service.js"
 
 export default {
     template: `
@@ -74,6 +74,7 @@ export default {
         sendMessege(email) {
             const idx = this.emails.findIndex(e => e.id === email.id)
             this.emails[idx].status = 'sent'
+            showSuccessMsg('Email sent successfully')
         },
         setStatusToTrash(email) {
             gmailService.save(email)
@@ -82,6 +83,7 @@ export default {
                         return email.id === updatedEmail.id
                     })
                     this.emails[idx].status = 'trash'
+                    showSuccessMsg('Email added to trash')
                 })
         },
         editEmailStared(email) {
@@ -91,6 +93,8 @@ export default {
                         return email.id === updatedEmail.id
                     })
                     this.emails[idx].isStared = email.isStared
+                    if(email.isStared) showSuccessMsg('Email added to starred')
+                    else showSuccessMsg('Email removed from starred')
                 })
         },
         editEmailImportant(email) {
@@ -100,6 +104,8 @@ export default {
                         return email.id === updatedEmail.id
                     })
                     this.emails[idx].isImportant = email.isImportant
+                    if(email.isImportant) showSuccessMsg('Email added to important')
+                    else showSuccessMsg('Email removed from important')
                 })
         },
         deleteEmail(emailId) {
@@ -108,7 +114,7 @@ export default {
                     const idx = this.emails.findIndex(email => {
                         return email.id === emailId
                     })
-                    this.emails.splice(idx, 1)
+                    showSuccessMsg('Email deleted')
                 })
         }
     },
