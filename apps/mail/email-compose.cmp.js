@@ -6,7 +6,8 @@ export default {
     template: `
     <form class="composed-form flex">
         <header class="form-header">
-            <router-link to="/email-App"><button>X</button></router-link>
+            <p>New Message</p>
+            <img @click="$router.push('/email-app')" src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/ic_close_16px_1x.png" alt="" />
         </header>
         <input @input="addToDrafts" class="to" v-model="email.to" type="text" placeholder="To" />
         <input @input="addToDrafts" class="subject" v-model="email.subject" type="text" placeholder="Subject" />

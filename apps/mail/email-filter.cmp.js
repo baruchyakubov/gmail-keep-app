@@ -1,7 +1,7 @@
 import { eventBus } from "../../services/event-bus.service.js"
 
 export default {
-    props: ['emails'],
+    props: ['emails' , 'criteria'],
     template: `
     <div @click="isOpen = false" class="opacity-wrapper" v-if="isOpen"></div>
         <section :class="{opened:isOpen}" class="email-filter">
@@ -43,7 +43,9 @@ export default {
         }
     },
     created() {
-        this.activeBtn = 'inbox'
+        if(this.criteria.isStared)  this.activeBtn = 'starred'
+        else if(this.criteria.isImportant) this.activeBtn = 'important'
+        else this.activeBtn = this.criteria.status
         eventBus.on('toggleFilter' , () => this.isOpen = !this.isOpen)
     },
     methods: {

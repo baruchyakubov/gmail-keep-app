@@ -10,7 +10,8 @@ export const gmailService = {
     queryCriteria,
     saveCriteria,
     sendEmail,
-    getEmptyEmail
+    getEmptyEmail,
+    setCriteria
 }
 
 const EMAILS_KEY = 'emails'
@@ -25,6 +26,10 @@ function query() {
 
 function queryCriteria() {
     return storageService.query(CRITERIA_KEY)
+}
+
+function setCriteria(criteria) {
+    return localStorage.setItem(CRITERIA_KEY, JSON.stringify(criteria))
 }
 
 function _createCriteria() {

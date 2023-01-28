@@ -246,31 +246,54 @@ section .email-container {
 
 .composed-form {
     position: fixed;
-    left: 100%;
+    left: 90%;
     top: 100%;
-    transform: translate(-100%, -100%);
+    border-radius: 8px 8px 0 0;
+    height: fit-content;
+    box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
+    width: 450px;
+    transform: translate(-90%, -100%);
     flex-direction: column;
+}
+
+.composed-form button{
+    all: unset;
 }
 
 
 .composed-form>* {
-    width: 35vw;
+    width: 100%;
 }
 
 .composed-form input {
-    padding: 20px;
+    outline: none;
+    padding-block: 20px;
+    padding-inline: 16px;
+    height: 40px;
     border-bottom: 0.1px rgb(219, 218, 230) solid;
+}
+
+.composed-form textarea{
+    padding: 20px;
 }
 
 .composed-form .send {
     border: none;
+    height: 64px;
     border-top: 0.1px rgb(219, 218, 230) solid;
+    cursor: pointer;
+    text-align: center;
+    background: #f2f6fc;
+    color: #041e49;
 }
 
 .composed-form textarea {
-    height: 30%;
+    height: 280px;
+    padding-block: 10px;
+    padding-inline: 16px;
     border: none;
     resize: none;
+    outline: none;
 }
 
 .to,
@@ -279,13 +302,30 @@ section .email-container {
     border-bottom: 1px grey solid;
 }
 
-.form-header button {
-    background-color: var(--clr1);
-    border: 0px black;
+.form-header {
+    background: #f2f6fc;
+    height: 40px;
+    padding-block: 10px;
+    padding-inline: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.form-header {
-    background-color: var(--clr1);
+.form-header img{
+    cursor: pointer;
+}
+
+.form-header p{
+    font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font-size: .875rem;
+    letter-spacing: normal;
+    color: #041e49;
+    font-weight: 500; 
+}
+
+.form-header img:hover{
+    background-color: #dfe1e6;
 }
 
 .opacity-wrapper {
@@ -368,7 +408,7 @@ section .email-container {
         display: inline-block;
     }
 
-    .composed-form>* {
+    .composed-form{
         width: 100vw;
     }
     .body-preview , .fullname{

@@ -6,10 +6,10 @@ import { eventBus } from "../services/event-bus.service.js"
 
 export default {
     template: `
-        <section v-if="emails"  class="email-app email-container">
+        <section v-if="emails && criteria"  class="email-app email-container">
             <email-header></email-header>
             <input v-model="criteria.txt" @input="setCriteria" class="search-mail" type="search" placeholder="Search mail" />
-            <email-filter :emails="emails" @setCriteriaByStatus="setCriteriaByStatus"></email-filter>
+            <email-filter :criteria="criteria" :emails="emails" @setCriteriaByStatus="setCriteriaByStatus"></email-filter>
             <email-list v-if="emails" :emails="emailsToShow"></email-list>
         </section>
     `,
@@ -22,7 +22,7 @@ export default {
     data() {
         return {
             emails: null,
-            criteria: {},
+            criteria: null,
             isSelectedEmail: false
         }
 
@@ -50,15 +50,18 @@ export default {
             if (status === 'starred'){
                 this.criteria.isStared = true
                 this.criteria.isImportant = false
+                gmailService.saveCriteria(this.criteria)
             } 
             else if (status === 'important'){
                 this.criteria.isImportant = true
                 this.criteria.isStared = false
+                gmailService.saveCriteria(this.criteria)
             }
             else {
                 this.criteria.status = status
                 if (this.criteria.isStared) this.criteria.isStared = false
                 else if (this.criteria.isImportant) this.criteria.isImportant = false
+                gmailService.saveCriteria(this.criteria)
             }
         },
         addMessege(email) {
@@ -119,5 +122,14 @@ export default {
             return emails
         }
     },
+    unmounted(){
+        eventBus.on('addMessege', this.addMessege)()
+        eventBus.on('setStatusToTrash', this.setStatusToTrash)()
+        eventBus.on('deleteEmail', this.deleteEmail)()
+        eventBus.on('editEmailStared', this.editEmailStared)()
+        eventBus.on('editEmailImportant', this.editEmailImportant)()
+        eventBus.on('editMessege', this.editMessege)()
+        eventBus.on('sendMessege', this.sendMessege)()
+    }
 
 }
