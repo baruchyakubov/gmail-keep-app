@@ -28,7 +28,7 @@ const routerOptions = {
 					component: emailDetails
 				},
 				{
-					path: '/email-app/compose',
+					path: '/email-app/compose/:id?',
 					component: emailCompose
 				}
 			]

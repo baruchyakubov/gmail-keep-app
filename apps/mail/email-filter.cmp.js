@@ -18,6 +18,10 @@ export default {
                 <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682460/nmt9iion3qid7pfxd3c8.png" alt="" />
                 <p>Starred</p>
             </div>
+            <div :class="{active: activeBtn === 'important' }" @click="setCriteria('important')">
+                <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674917594/qqmglmwdt5hqpd7mna9e.png" alt="" />
+                <p>Important</p>
+            </div>
             <div :class="{active: activeBtn === 'trash' }" @click="setCriteria('trash')">
                 <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682443/pndv8blj1ovmewptmwox.png" alt="" />
                 <p>Trash</p>
@@ -26,7 +30,7 @@ export default {
                 <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682471/e3xkgzlhgbkoufcccqho.png" alt="" />
                 <p>Sent</p>
             </div>
-            <div :class="{active: activeBtn === 'drafts' }" @click="setCriteria('drafts')">
+            <div :class="{active: activeBtn === 'draft' }" @click="setCriteria('draft')">
                 <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1672682437/ybnoxsvfaa2lclwxbmki.png" alt="" />
                 <p>Drafts</p>
             </div>

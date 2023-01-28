@@ -5,10 +5,12 @@ export default {
     props: ['email'],
     template: `
         <section @mouseleave="isHover=false" @mouseover="isHover=true" @click="showDetails" :class="setColor" v-if="email" class="email-preview">
-            <img src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/check_box_outline_blank_baseline_nv700_20dp.png" alt="" />
-            <img @click.stop="toggleIsStared" v-if="!email.isStared" src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_baseline_nv700_20dp.png" alt="" />
+            <img v-if="!email.isImportant" @click.stop="toggleIsImportant"  class="important" src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674917594/qqmglmwdt5hqpd7mna9e.png" alt="" />
+            <img v-else @click.stop="toggleIsImportant" src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674917962/nzjivqs9vrx9v6akwlpz.png" alt="" />
+            <img class="stared" @click.stop="toggleIsStared" v-if="!email.isStared" src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_baseline_nv700_20dp.png" alt="" />
             <img @click.stop="toggleIsStared" v-else src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/1x/star_fill_googyellow500_20dp.png" alt="" />
-            <p class="fullname">{{ email.fullname }}</p>
+            <p v-if="email.status === 'draft'" class="draft-preview">Draft</p>
+            <p v-else class="fullname">{{ email.fullname }}</p>
             <p class="body-preview">{{ limitChar }}</p>
             <p v-if="!isHover" class="date-preview">{{ setDate }}</p>
             <div class="action-btn" v-else>
@@ -36,7 +38,6 @@ export default {
         },
         limitChar() {
             var str = this.email.subject + '-' + this.email.body
-            // if (str.length > 50) str = str.substring(0, 120) + '...'
             return str
         }
     },
@@ -46,7 +47,16 @@ export default {
             email.isStared = !email.isStared
             eventBus.emit('editEmailStared', this.email)
         },
+        toggleIsImportant(){
+            const email = this.email
+            email.isImportant = !email.isImportant
+            eventBus.emit('editEmailImportant', this.email)
+        },
         showDetails() {
+            if(this.email.status === 'draft'){
+                this.$router.push(`/email-app/compose/${this.email.id}`)
+                return
+            }
             this.email.isRead = true
             gmailService.save(this.email)
             eventBus.emit('toggleEmailList')

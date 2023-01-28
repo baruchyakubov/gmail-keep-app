@@ -1,43 +1,66 @@
 import { gmailService } from "../../services/email-service.js"
 import { eventBus } from "../../services/event-bus.service.js"
+import { utilService } from "../../services/util.service.js"
 
-export default{
-    template:`
+export default {
+    template: `
     <form class="composed-form flex">
         <header class="form-header">
             <router-link to="/email-App"><button>X</button></router-link>
         </header>
-        <input class="to" v-model="to" type="text" placeholder="To" />
-        <input class="subject" v-model="subject" type="text" placeholder="Subject" />
-        <textarea  v-model="body" name="" id="" cols="30" rows="10"></textarea>
-        <div class="note-info">{{ noteInfo }}</div>
+        <input @input="addToDrafts" class="to" v-model="email.to" type="text" placeholder="To" />
+        <input @input="addToDrafts" class="subject" v-model="email.subject" type="text" placeholder="Subject" />
+        <textarea @input="addToDrafts" v-model="email.body" name="" id="" cols="30" rows="10"></textarea>
+        <!-- <div class="note-info">{{ noteInfo }}</div> -->
         <button class="send" @click.prevent="sendMessage">send</button>
     </form>
     `,
-    data(){
+    data() {
         return {
-            username:'',
-            to: '',
-            subject:'',
-            body:'',
-            noteInfo:''
+            email: gmailService.getEmptyEmail(),
+            timeOut: null
         }
     },
-    created(){
+    created() {
+        const id = this.$route.params.id
+        if (id) this.insertEmail(id)
         gmailService.getUser()
             .then(username => {
                 this.username = username
             })
-            eventBus.on('mailNote' , this.sendNote)
     },
-    methods:{  
-        sendMessage(){
-            if(this.to === '') return
-            eventBus.emit('sendMessege' , {to: this.to , subject: this.subject , body: this.body , noteInfo: this.noteInfo})
-            this.$router.push('/email-App')
+    mounted(){
+        // this.addToDrafts = utilService.debounce(this.addToDrafts)
+    },
+    methods: {
+        insertEmail(id) {
+            gmailService.get(id)
+                .then(email => {
+                    this.email = email
+                })
         },
-        sendNote(note){
+        addToDrafts() {
+            gmailService.save(this.email)
+                .then(email => {
+                    if (!this.email.id){
+                        this.email = email
+                        eventBus.emit('addMessege', {...this.email})
+                    } else{
+                        eventBus.emit('editMessege', {...this.email})
+                    }
+                })
+        },
+        sendMessage() {
+            if (this.to === '') return
+            this.email.status = 'sent'
+            gmailService.save(this.email)
+                .then(email => {
+                    eventBus.emit('sendMessege', {...this.email})
+                    this.$router.push('/email-App')
+                })
+        },
+        sendNote(note) {
             this.noteInfo = note.info.txt
-        }  
+        }
     },
 }

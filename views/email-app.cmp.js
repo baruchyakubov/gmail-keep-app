@@ -34,27 +34,43 @@ export default {
             })
         gmailService.queryCriteria()
             .then(criteria => { this.criteria = criteria })
-        eventBus.on('sendMessege', this.sendMessege)
+        eventBus.on('addMessege', this.addMessege)
         eventBus.on('setStatusToTrash', this.setStatusToTrash)
         eventBus.on('deleteEmail', this.deleteEmail)
         eventBus.on('editEmailStared', this.editEmailStared)
+        eventBus.on('editEmailImportant', this.editEmailImportant)
+        eventBus.on('editMessege', this.editMessege)
+        eventBus.on('sendMessege', this.sendMessege)
     },
     methods: {
         setCriteria() {
             this.emailsToShow()
         },
         setCriteriaByStatus(status) {
-            if(status === 'starred') this.criteria.isStared = true
-            else{
+            if (status === 'starred'){
+                this.criteria.isStared = true
+                this.criteria.isImportant = false
+            } 
+            else if (status === 'important'){
+                this.criteria.isImportant = true
+                this.criteria.isStared = false
+            }
+            else {
                 this.criteria.status = status
-                if(this.criteria.isStared) this.criteria.isStared = false
+                if (this.criteria.isStared) this.criteria.isStared = false
+                else if (this.criteria.isImportant) this.criteria.isImportant = false
             }
         },
-        sendMessege(form) {
-            gmailService.sendEmail(form.to, form.subject, form.body, form.noteInfo)
-                .then(email => {
-                    this.emails.unshift(email)
-                })
+        addMessege(email) {
+            this.emails.unshift(email)
+        },
+        editMessege(email) {
+            const idx = this.emails.findIndex(e => e.id === email.id)
+            this.emails.splice(idx, 1, email)
+        },
+        sendMessege(email) {
+            const idx = this.emails.findIndex(e => e.id === email.id)
+            this.emails[idx].status = 'sent'
         },
         setStatusToTrash(email) {
             gmailService.save(email)
@@ -65,14 +81,23 @@ export default {
                     this.emails[idx].status = 'trash'
                 })
         },
-        editEmailStared(email){
+        editEmailStared(email) {
             gmailService.save(email)
-            .then(updatedEmail => {
-                const idx = this.emails.findIndex(email => {
-                    return email.id === updatedEmail.id
+                .then(updatedEmail => {
+                    const idx = this.emails.findIndex(email => {
+                        return email.id === updatedEmail.id
+                    })
+                    this.emails[idx].isStared = email.isStared
                 })
-                this.emails[idx].isStared = email.isStared
-            })
+        },
+        editEmailImportant(email) {
+            gmailService.save(email)
+                .then(updatedEmail => {
+                    const idx = this.emails.findIndex(email => {
+                        return email.id === updatedEmail.id
+                    })
+                    this.emails[idx].isImportant = email.isImportant
+                })
         },
         deleteEmail(emailId) {
             gmailService.remove(emailId)
@@ -89,6 +114,7 @@ export default {
         emailsToShow() {
             const regex = new RegExp(this.criteria.txt, 'i')
             if (this.criteria.isStared) var emails = this.emails.filter(email => (regex.test(email.fullname) || regex.test(email.subject) || regex.test(email.body)) && email.isStared === this.criteria.isStared)
+            else if (this.criteria.isImportant) var emails = this.emails.filter(email => (regex.test(email.fullname) || regex.test(email.subject) || regex.test(email.body)) && email.isImportant === this.criteria.isImportant)
             else var emails = this.emails.filter(email => (regex.test(email.fullname) || regex.test(email.subject) || regex.test(email.body)) && email.status === this.criteria.status)
             return emails
         }

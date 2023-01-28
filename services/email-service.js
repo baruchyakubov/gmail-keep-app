@@ -9,7 +9,8 @@ export const gmailService = {
     getUser,
     queryCriteria,
     saveCriteria,
-    sendEmail
+    sendEmail,
+    getEmptyEmail
 }
 
 const EMAILS_KEY = 'emails'
@@ -34,6 +35,7 @@ function _createCriteria() {
             txt: '',
             isRead: true,
             isStared: false,
+            isImportant: false,
             lables: ['important', 'romantic']
         }
         localStorage.setItem(CRITERIA_KEY, JSON.stringify(criteria) || null)
@@ -63,7 +65,7 @@ function save(email) {
     }
 }
 
-function sendEmail(to, subject, body , note) {
+function sendEmail(to, subject, body , note , status) {
     var email = {
         id: null,
         subject: subject,
@@ -73,10 +75,26 @@ function sendEmail(to, subject, body , note) {
         from: 'user@appsus.com',
         to,
         fullname: 'Mahatma Appsus',
-        status: 'sent',
+        status,
         note
     }
     return save(email)
+}
+
+function getEmptyEmail(){
+    return {
+        subject: '',
+        body: '',
+        isRead: true,
+        sentAt: Date.now(),
+        from: 'user@appsus.com',
+        to: '',
+        fullname: 'Mahatma Appsus',
+        status: 'draft',
+        note: null,
+        isStared:false,
+        isImportant:false
+    }
 }
 
 function saveCriteria(criteria) {
@@ -102,7 +120,8 @@ function _createEmails() {
                 fullname: 'Mahatma Appsus',
                 status: 'sent',
                 note:'',
-                isStared:true
+                isStared:true,
+                isImportant:true
             },
 
             {
@@ -110,78 +129,98 @@ function _createEmails() {
                 subject: 'Now launched: new routing and address capabilities',
                 body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
                 isRead: true,
-                sentAt: 1551133930594,
+                sentAt: 1551132930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
                 note:'',
-                isStared:true
+                isStared:true,
+                isImportant:true
             },
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
                 body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
-                sentAt: 1551133930594,
+                sentAt: 1551131930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'My fitness pal',
                 status: 'inbox',
                 note:'',
-                isStared:true
+                isStared:true,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
                 body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: true,
-                sentAt: 1551133930594,
+                sentAt: 1551123930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'muki',
-                status: 'inbox',
+                status: 'draft',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:true
             },
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
                 body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
-                isRead: false,
-                sentAt: 1551133930594,
-                from: 'momo@momo.com',
-                to: 'user@appsus.com',
-                fullname: 'duki',
-                status: 'inbox',
-                note:'',
-                isStared:true
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Miss you!',
-                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
-                isRead: false,
+                isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'pet',
-                status: 'inbox',
+                status: 'draft',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:true
             },
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
                 body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
-                isRead: false,
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'pet',
+                status: 'draft',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
+                isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'netflix',
+                status: 'draft',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
+                isRead: false,
+                sentAt: 1551144930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -194,20 +233,8 @@ function _createEmails() {
                 fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Miss you!',
-                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
-                isRead: false,
-                sentAt: 1551133930594,
-                from: 'momo@momo.com',
-                to: 'user@appsus.com',
-                fullname: 'puki',
-                status: 'inbox',
-                note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -220,7 +247,8 @@ function _createEmails() {
                 fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -233,7 +261,8 @@ function _createEmails() {
                 fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -246,7 +275,8 @@ function _createEmails() {
                 fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -259,7 +289,8 @@ function _createEmails() {
                 fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -272,7 +303,8 @@ function _createEmails() {
                 fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -285,7 +317,8 @@ function _createEmails() {
                 fullname: 'puki',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -298,7 +331,8 @@ function _createEmails() {
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -311,7 +345,8 @@ function _createEmails() {
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -324,7 +359,8 @@ function _createEmails() {
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
             {
                 id: utilService.makeId(),
@@ -337,8 +373,135 @@ function _createEmails() {
                 fullname: 'Google Maps Platform',
                 status: 'inbox',
                 note:'',
-                isStared:false
+                isStared:false,
+                isImportant:false
             },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'Google Maps Platform',
+                status: 'inbox',
+                note:'',
+                isStared:false,
+                isImportant:false
+            }
         ]
         localStorage.setItem(EMAILS_KEY, JSON.stringify(emails) || null)
     }
