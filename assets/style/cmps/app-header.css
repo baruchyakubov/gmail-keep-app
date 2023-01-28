@@ -5,5 +5,22 @@
   padding: 1em;
   height: 10vh;
   border-bottom: 0.1px rgb(219, 218, 230) solid;
+  background-color: #24292f;
+}
+
+.app-header nav{
+  display: flex;
+  height: fit-content;
+  align-items: center;
+  gap: 2.5vw;
+}
+
+.app-header nav a{
+  min-height: unset;
+  font-size: larger;
+}
+
+.router-link-active{
+  color: antiquewhite;
 }
 

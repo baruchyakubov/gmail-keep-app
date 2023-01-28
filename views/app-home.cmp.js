@@ -4,7 +4,10 @@ export default {
             <section class="intro">
                <h1>Welcome to appsus</h1>
                <p>A place to checkout your emails and keep your notes</p>
-               <!-- <img src="https://res.cloudinary.com/dgvpl7cdq/image/upload/v1674702681/ghvcyf3ooz4jcz4gpbjy.jpg" alt="" /> -->
+               <div class="home-btn">
+               <router-link to="/email-app"><button class="button-66">Check your emails</button></router-link> 
+                <router-link to="/keep-app"><button class="button-66">Check your notes</button></router-link>
+               </div>
             </section>
         </section>
     `,
