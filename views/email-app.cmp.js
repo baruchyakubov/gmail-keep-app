@@ -2,7 +2,7 @@ import emailHeader from "../apps/mail/email-header.cmp.js"
 import emailList from "../apps/mail/email-list.cmp.js"
 import { gmailService } from "../services/email-service.js"
 import emailFilter from "../apps/mail/email-filter.cmp.js"
-import { eventBus, showSuccessMsg, showUserMsg } from "../services/event-bus.service.js"
+import { eventBus, showSuccessMsg } from "../services/event-bus.service.js"
 
 export default {
     template: `
@@ -22,10 +22,8 @@ export default {
     data() {
         return {
             emails: null,
-            criteria: null,
-            isSelectedEmail: false
+            criteria: null
         }
-
     },
     created() {
         gmailService.query()
@@ -47,12 +45,12 @@ export default {
             this.emailsToShow()
         },
         setCriteriaByStatus(status) {
-            if (status === 'starred'){
+            if (status === 'starred') {
                 this.criteria.isStared = true
                 this.criteria.isImportant = false
                 gmailService.saveCriteria(this.criteria)
-            } 
-            else if (status === 'important'){
+            }
+            else if (status === 'important') {
                 this.criteria.isImportant = true
                 this.criteria.isStared = false
                 gmailService.saveCriteria(this.criteria)
@@ -93,7 +91,7 @@ export default {
                         return email.id === updatedEmail.id
                     })
                     this.emails[idx].isStared = email.isStared
-                    if(email.isStared) showSuccessMsg('Email added to starred')
+                    if (email.isStared) showSuccessMsg('Email added to starred')
                     else showSuccessMsg('Email removed from starred')
                 })
         },
@@ -104,7 +102,7 @@ export default {
                         return email.id === updatedEmail.id
                     })
                     this.emails[idx].isImportant = email.isImportant
-                    if(email.isImportant) showSuccessMsg('Email added to important')
+                    if (email.isImportant) showSuccessMsg('Email added to important')
                     else showSuccessMsg('Email removed from important')
                 })
         },
@@ -128,7 +126,7 @@ export default {
             return emails
         }
     },
-    unmounted(){
+    unmounted() {
         eventBus.on('addMessege', this.addMessege)()
         eventBus.on('setStatusToTrash', this.setStatusToTrash)()
         eventBus.on('deleteEmail', this.deleteEmail)()

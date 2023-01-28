@@ -9,7 +9,6 @@ export const gmailService = {
     getUser,
     queryCriteria,
     saveCriteria,
-    sendEmail,
     getEmptyEmail,
     setCriteria
 }
@@ -68,22 +67,6 @@ function save(email) {
     } else {
         return storageService.post(EMAILS_KEY, email)
     }
-}
-
-function sendEmail(to, subject, body , note , status) {
-    var email = {
-        id: null,
-        subject: subject,
-        body: body,
-        isRead: true,
-        sentAt: Date.now(),
-        from: 'user@appsus.com',
-        to,
-        fullname: 'Mahatma Appsus',
-        status,
-        note
-    }
-    return save(email)
 }
 
 function getEmptyEmail(){

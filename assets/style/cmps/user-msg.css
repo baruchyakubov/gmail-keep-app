@@ -8,6 +8,8 @@
     padding: 10px;
     border-radius: 5px;
     opacity: 0;
+    color: aliceblue;
+    font-size: larger;
     transition: opacity 1s;
 }
 
@@ -16,8 +18,6 @@
 }
 .success {
     background-color: rgb(57, 57, 59);
-    color: aliceblue;
-    font-size: larger;
 }
 .error {
     background-color: rgb(187, 104, 104);

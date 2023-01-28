@@ -1,6 +1,5 @@
 import { gmailService } from "../../services/email-service.js"
-import { eventBus } from "../../services/event-bus.service.js"
-import { utilService } from "../../services/util.service.js"
+import { eventBus, showErrorMsg } from "../../services/event-bus.service.js"
 
 export default {
     template: `
@@ -12,14 +11,12 @@ export default {
         <input @input="addToDrafts" class="to" v-model="email.to" type="text" placeholder="To" />
         <input @input="addToDrafts" class="subject" v-model="email.subject" type="text" placeholder="Subject" />
         <textarea @input="addToDrafts" v-model="email.body" name="" id="" cols="30" rows="10"></textarea>
-        <!-- <div class="note-info">{{ noteInfo }}</div> -->
         <button class="send" @click.prevent="sendMessage">send</button>
     </form>
     `,
     data() {
         return {
-            email: gmailService.getEmptyEmail(),
-            timeOut: null
+            email: gmailService.getEmptyEmail()
         }
     },
     created() {
@@ -29,9 +26,6 @@ export default {
             .then(username => {
                 this.username = username
             })
-    },
-    mounted(){
-        // this.addToDrafts = utilService.debounce(this.addToDrafts)
     },
     methods: {
         insertEmail(id) {
@@ -52,7 +46,10 @@ export default {
                 })
         },
         sendMessage() {
-            if (this.to === '') return
+            if (this.email.to === '' || this.email.subject === '' || this.email.body === ''){
+                showErrorMsg('Fill the required inputs')
+                return
+            }
             this.email.status = 'sent'
             gmailService.save({...this.email})
                 .then(email => {
