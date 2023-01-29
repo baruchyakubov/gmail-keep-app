@@ -49,8 +49,8 @@ export default {
                 eventBus.emit('setNoteColor', { note: this.note, color })
         },
         edit() {
-            if(this.note.type === 'noteVideo') var isValid = this.setYoutubeUrl()
-            if(!isValid){
+            if (this.note.type === 'noteVideo') var isValid = this.validateYoutubeUrl()
+            if (!isValid) {
                 showErrorMsg('not valid url')
                 return
             }
@@ -59,15 +59,24 @@ export default {
             eventBus.emit('edit', note)
             this.$router.push('/keep-app')
         },
-        setYoutubeUrl(){
-            const words = this.form.url.split('?v=');
-            if(!words[1]){
-                return false
-            } 
-            this.form.url = `https://www.youtube.com/embed/${words[1]}`
-            return true
+        validateYoutubeUrl() {
+            const watchUrl = this.form.url.split('watch?v=');
+            const embedUrl = this.form.url.split('embed/');
+            if (!watchUrl[1]) {
+                if (!embedUrl[1]) {
+                    return false
+                }
+            }
+            if (watchUrl[0] !== 'https://www.youtube.com/') {
+                if (embedUrl[0] !== 'https://www.youtube.com/') {
+                    return false
+                } else return true
+            } else {
+                this.form.url = `https://www.youtube.com/embed/${watchUrl[1]}`
+                return true
+            }
         },
-        setNoteType(noteType){
+        setNoteType(noteType) {
             this.note = keepService.getEmptyNote(noteType)
         }
     },
