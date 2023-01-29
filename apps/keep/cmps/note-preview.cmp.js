@@ -1,6 +1,7 @@
 import noteImg from "../dynamic-cmps/note-img.cmp.js"
 import noteTxt from "../dynamic-cmps/note-txt.cmp.js"
 import noteTodos from "../dynamic-cmps/note-todos.cmp.js"
+import noteVideo from "../dynamic-cmps/note-video.cmp.js"
 import { eventBus } from "../../../services/event-bus.service.js"
 
 export default {
@@ -35,6 +36,7 @@ export default {
     components: {
         noteTxt,
         noteImg,
-        noteTodos
+        noteTodos,
+        noteVideo
     }
 }

@@ -82,6 +82,8 @@ export default {
                     return regex.test(note.info.title)
                 case 'noteTodos':
                     return regex.test(note.info.label)
+                case 'noteVideo':
+                    return regex.test(note.info.title)
             }
         }
     },

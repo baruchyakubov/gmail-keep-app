@@ -57,6 +57,18 @@ function getEmptyNote(type) {
                     backgroundColor: "#d7aefb"
                 }
             }
+        case 'noteVideo':
+            return {
+                type: "noteVideo",
+                isPinned: false,
+                info: {
+                    url: "",
+                    title: ""
+                },
+                style: {
+                    backgroundColor: "#d7aefb"
+                }
+            }
         case 'noteTodos':
             return {
                 type: "noteTodos",
@@ -81,8 +93,19 @@ function _createNotes() {
     let notes = JSON.parse(localStorage.getItem(NOTES_KEY))
 
     if (!notes || !notes.length) {
-        console.log('storage');
         notes = [
+            {
+                id: "n100",
+                type: "noteVideo",
+                isPinned: true,
+                info: {
+                    url: "https://www.youtube.com/embed/QOOiY0bgrlU",
+                    title: "Bobi and Me"
+                },
+                style: {
+                    backgroundColor: "#a7ffeb"
+                }
+            },
             {
                 id: "n101",
                 type: "noteTxt",
@@ -94,6 +117,18 @@ function _createNotes() {
                     backgroundColor: "#d7aefb"
                 }
 
+            },
+            {
+                id: "n233",
+                type: "noteVideo",
+                isPinned: false,
+                info: {
+                    url: "https://www.youtube.com/embed/Ja27RqNj_oo",
+                    title: "Bobi and Me"
+                },
+                style: {
+                    backgroundColor: "#d7aefb"
+                }
             },
             {
                 id: "n102",
@@ -135,6 +170,18 @@ function _createNotes() {
                     backgroundColor: "#fdcfe8"
                 }
 
+            },
+            {
+                id: "n215",
+                type: "noteVideo",
+                isPinned: false,
+                info: {
+                    url: "https://www.youtube.com/embed/8Sr991JwP3A",
+                    title: "Bobi and Me"
+                },
+                style: {
+                    backgroundColor: "#cbf0f8"
+                }
             },
             {
                 id: "n105",
