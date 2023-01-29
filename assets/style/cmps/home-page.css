@@ -69,9 +69,20 @@
   transform: translateY(-2px);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .button-66 {
     padding: 16px 44px;
     min-width: 150px;
   }
+
+  .home-page .intro h1{
+    font-size: 3.375rem;
+}
+
+.home-page .intro  p{
+    font-size: x-large;
+}
+.home-page .intro{
+  max-width: 460px;
+}
 }
