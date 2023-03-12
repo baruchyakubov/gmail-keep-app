@@ -19,8 +19,8 @@ This is the third project of my course(frontend only) that is based on gmail and
 4. Pin notes.
 
 ## Motivation
-To improve my skills in SCC and HTML and to improve my ability to working eith js frameworks such as vue.js
+To improve my skills in SCC and HTML and to improve my ability to working with js frameworks such as vue.js
 
 ## Technologies
-1. Vue.js and 
+1. Vue.js. 
 2. Vue router.
