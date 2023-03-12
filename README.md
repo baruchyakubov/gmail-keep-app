@@ -2,7 +2,7 @@
 ## About
 This is the third project of my course(frontend only) that is based on gmail and keep app by google , and manages full crud on emails and notes.
 
-[Link to project](https://baruchyakubov.github.io/gmail-keep-app/#/)
+[Link to website](https://baruchyakubov.github.io/gmail-keep-app/#/)
 
 ![image](https://user-images.githubusercontent.com/114091759/224544120-8e6187b4-35ec-474b-9df7-457e17a483ea.png)
 ![image](https://user-images.githubusercontent.com/114091759/224544139-f3f76ca3-3e63-425f-853b-4032ddfa69eb.png)
